@@ -1,5 +1,6 @@
 package com.example.demo.springmessagingapp.controller;
 
+import com.example.demo.springmessagingapp.dto.UserDTO;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -19,5 +20,10 @@ public class MessageRestController {
     @GetMapping("/{name}")
     public String usingPathVariable(@PathVariable String name){
         return "Hello, " + name + " from BridgeLabz!";
+    }
+
+    @PostMapping("/post")    //post request tp extract first and last name
+    public String displayName(@RequestBody UserDTO user){
+        return "Hello " + user.getFirstName() + " " + user.getLastName() + " from BridgeLabz!!";
     }
 }
